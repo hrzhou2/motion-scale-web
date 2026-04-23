@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description"
+          content="MotionScale: Reconstructing Appearance, Geometry, and Motion of Dynamic Scenes with Scalable 4D Gaussian Splatting">
+    <meta name="keywords" content="Gaussian Splatting, Dynamic View Synthesis, 4D Reconstruction">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MotionScale: Reconstructing Appearance, Geometry, and Motion of Dynamic Scenes with Scalable 4D Gaussian Splatting</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+      </a>
+  </div>
+  <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+          <a class="navbar-item" href="https://hrzhou2.github.io/motion-scale-web/">
+    <span class="icon">
+        <i class="fas fa-home"></i>
+    </span>
+          </a>
+
+          <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                  Related Research
+              </a>
+              <div class="navbar-dropdown">
+                  <a class="navbar-item" href="https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/"
+                     target="_blank">
+                      3D Gaussian Splatting
+                  </a>
+              </div>
+          </div>
+      </div>
+
+  </div>
+</nav>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">MotionScale: Reconstructing Appearance, Geometry, and Motion of Dynamic Scenes with Scalable 4D Gaussian Splatting</h1>
+
+            <div class="title is-3">
+            <strong>CVPR 2026</strong>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <div class="author-block">
+                <a href="https://hrzhou2.github.io/">Haoran Zhou</a><sup>1</sup>,
+              </div>
+              <div class="author-block">
+                <a href="https://www.comp.nus.edu.sg/~leegh/">Gim Hee Lee</a><sup>1</sup>,
+              </div>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>National University of Singapore</span>
+          </div>
+
+	    <!-- <div class="is-size-5 publication-authors">
+		<strong>Arxiv</strong>
+            </div> -->
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2603.29296" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/hrzhou2/motion-scale"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-widescreen">
+    <div class="column is-full-width has-text-centered">
+      <h2 class="title is-3">4D Scene Reconstruction</h2>
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item">
+          <video autoplay controls muted loop width="100%">
+            <source src="./materials/videos/horsejump-high.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video autoplay controls muted loop width="100%">
+            <source src="./materials/videos/tennis.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video autoplay controls muted loop width="100%">
+            <source src="./materials/videos/lindy-hop.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video autoplay controls muted loop width="100%">
+            <source src="./materials/videos/soapbox.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Realistic reconstruction of dynamic 4D scenes from monocular videos is essential for understanding the physical world. Despite recent progress in neural rendering, existing methods often struggle to recover accurate 3D geometry and temporally consistent motion in complex environments. To address these challenges, we propose MotionScale, a 4D Gaussian Splatting framework that scales efficiently to large scenes and extended sequences while maintaining high-fidelity structural and motion coherence. At the core of our approach is a scalable motion field parameterized by cluster-centric basis transformations that adaptively expand to capture diverse and evolving motion patterns. To ensure robust reconstruction over long durations, we introduce a progressive optimization strategy comprising two decoupled propagation stages: 1) A background extension stage that adapts to newly visible regions, refines camera poses, and explicitly models transient shadows; 2) A foreground propagation stage that enforces motion consistency through a specialized three-stage refinement process. Extensive experiments on challenging real-world benchmarks demonstrate that MotionScale significantly outperforms state-of-the-art methods in both reconstruction quality and temporal stability.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div style="text-align:center;">
+        <h2 class="title is-3"><b>Comparison</b></h2>
+        <video controls muted loop autoplay playsinline width="100%">
+          <source src="./materials/videos/video_comparison.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div style="text-align:center; margin-top: 2rem;">
+        <h2 class="title is-3"><b>Tracking Results</b></h2>
+        <video controls muted loop autoplay playsinline width="100%">
+          <source src="./materials/videos/tracking_results-saved_crf28.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section " id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{zhou2026motionscale,
+  title={MotionScale: Reconstructing Appearance, Geometry, and Motion of Dynamic Scenes with Scalable 4D Gaussian Splatting},
+  author={Zhou, Haoran and Lee, Gim Hee},
+  journal={arXiv preprint arXiv:2603.29296},
+  year={2026}
+}
+      </code></pre>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Acknowledgements</h2>
+      <div class="content has-text-justified">
+        <p>The website template is borrowed from <a href="https://nerfies.github.io/">Nerfies</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>
